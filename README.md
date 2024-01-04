@@ -53,6 +53,10 @@
 
 **5. Basic Sound Analytics (40 minutes)**
 - Filtering: Removing noise or specific frequencies.
+   ```
+  For above task, you can use the sample file 'filtering_audio.py'. A sample bandpass filter (only passes audio within a certain frequencies as decided by the user are kept) is shown.
+  ```
+- Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.
 - Feature extraction: MFCCs, chroma, and spectral contrast.
 - Basic sound classification or sound event detection.
 

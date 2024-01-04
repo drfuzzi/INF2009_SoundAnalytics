@@ -31,7 +31,7 @@
 - Physically connecting the microphone to the Raspberry Pi.
 - Testing the microphone:
   ```bash
-  arecord --duration=10 --filename=test.wav
+  arecord --duration=10 test.wav
   aplay test.wav
   ```
 
@@ -46,6 +46,7 @@
   ```
 - Capturing audio in Python.
 - Visualizing sound waves.
+- You can use the sample file 'microphone_streaming_with_spectrum'
 
 **5. Basic Sound Analytics (40 minutes)**
 - Fourier Transform: Understanding frequency components of sound.

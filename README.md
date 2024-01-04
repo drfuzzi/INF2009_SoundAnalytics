@@ -8,7 +8,7 @@
 1. Raspberry Pi 4 with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
 3. USB keyboard, mouse, and monitor.
-4. USB or 3.5mm microphone compatible with Raspberry Pi.
+4. USB microphone compatible with Raspberry Pi.
 5. Internet connectivity (Wi-Fi or Ethernet).
 6. Basic knowledge of Python and Linux commands.
 
@@ -36,9 +36,13 @@
   ```
 
 **4. Introduction to Sound Processing with Python (20 minutes)**
-- Installing necessary Python libraries:
+- Installing necessary Python libraries (may need additional libraries if not preinstalled with default python):
   ```bash
-  sudo pip3 install numpy scipy matplotlib soundfile
+  sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
+  sudo pip3 install pyaudio
+  ```
+  ```bash
+  sudo pip3 install scipy matplotlib
   ```
 - Capturing audio in Python.
 - Visualizing sound waves.

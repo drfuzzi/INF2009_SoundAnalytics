@@ -46,7 +46,7 @@
   ```
 - Capturing audio in Python.
 - Visualizing sound waves.
-- You can use the sample file 'microphone_streaming_with_spectrum'
+- You can use the sample file *'microphone_streaming_with_spectrum.py'*
 
 **5. Basic Sound Analytics (40 minutes)**
 - Fourier Transform: Understanding frequency components of sound.

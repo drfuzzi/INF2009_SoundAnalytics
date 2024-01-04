@@ -27,20 +27,18 @@ line_fft, = ax2.plot(xf,np.random.rand(BUFFER//2), '-', lw=2)
 # basic formatting for the axes
 ax1.set_title('AUDIO WAVEFORM')
 ax1.set_xlabel('samples')
-ax1.set_ylabel('volume')
+ax1.set_ylabel('amplitude')
 ax1.set_ylim(-1000, 1000) # change this to see more amplitude values (when we speak)
 ax1.set_xlim(0, BUFFER)
 
 ax2.set_title('SPECTRUM')
-ax2.set_xlabel('Frequency')
-ax2.set_ylabel('Log Magnitude')
+ax2.set_xlabel('frequency')
+ax2.set_ylabel('log magnitude')
 ax2.set_ylim(0, 1000) 
 ax2.set_xlim(0, RATE/2)
 
 # show the plot
 plt.show(block=False)
-
-print('stream started')
 
 #%% Initialize the pyaudio class instance
 audio = pyaudio.PyAudio()
@@ -58,6 +56,7 @@ stream = audio.open(
 # for measuring frame rate
 frame_count = 0
 start_time = time.time()
+print('stream started')
 
 while True:
    

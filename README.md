@@ -7,7 +7,7 @@
 **Prerequisites:**
 1. Raspberry Pi 4 with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
-3. USB keyboard, mouse, and monitor.
+3. USB keyboard, mouse, and monitor. You can also use Real VNC to access the Rasperry Pi (Need to enable VNC configuration in your Pi)
 4. USB microphone compatible with Raspberry Pi.
 5. Internet connectivity (Wi-Fi or Ethernet).
 6. Basic knowledge of Python and Linux commands.

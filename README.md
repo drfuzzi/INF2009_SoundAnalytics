@@ -45,11 +45,11 @@
   sudo pip3 install scipy matplotlib
   ```
 - Capturing audio in Python.
-- Visualizing sound waves.
-- You can use the sample file *'microphone_streaming_with_spectrum.py'*
+- Fourier Transform: Understanding frequency components of sound.
+- Visualizing sound waves (both the wave itself and the audio spectrum).
+- For above tasks, you can use the sample file *'microphone_streaming_with_spectrum.py'*
 
 **5. Basic Sound Analytics (40 minutes)**
-- Fourier Transform: Understanding frequency components of sound.
 - Filtering: Removing noise or specific frequencies.
 - Feature extraction: MFCCs, chroma, and spectral contrast.
 - Basic sound classification or sound event detection.

@@ -48,7 +48,7 @@
 - Fourier Transform: Understanding frequency components of sound.
 - Visualizing sound waves (both the wave itself and the audio spectrum).
   ```
-  For above tasks, you can use the sample file *'microphone_streaming_with_spectrum.py'*
+  For above tasks, you can use the sample file 'microphone_streaming_with_spectrum.py'
   ```
 
 **5. Basic Sound Analytics (40 minutes)**

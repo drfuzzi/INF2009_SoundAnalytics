@@ -4,7 +4,7 @@ import struct  # Refer to https://docs.python.org/3/library/struct.html (Used fo
 import numpy as np 
 import matplotlib.pyplot as plt
 from scipy.fftpack import fft, fftfreq # Refer to https://docs.scipy.org/doc/scipy/tutorial/fft.html (Used for Fourier Spectrum to display audio frequencies)
-import time # In case time of execution is required (in this example, it is employed to check on frame rate)
+import time # In case time of execution is required
 
 #%% Parameters
 BUFFER = 1024 * 16           # samples per frame (you can change the same to acquire more or less samples)
@@ -53,7 +53,7 @@ stream = audio.open(
 
 print('stream started')
 
-frame_rate = []
+exec_time = []
 for _ in range(0, RATE // BUFFER * RECORD_SECONDS):   
        
     # binary data
@@ -67,7 +67,7 @@ for _ in range(0, RATE // BUFFER * RECORD_SECONDS):
     yf = fft(data_int)
     
     # calculate time of execution of FFT
-    frame_rate.append(1 / (time.time() - start_time))
+    exec_time.append(time.time() - start_time)
     
     #update line plots for both axes
     line.set_ydata(data_int)
@@ -78,4 +78,4 @@ for _ in range(0, RATE // BUFFER * RECORD_SECONDS):
 audio.terminate()
    
 print('stream stopped')
-print('average frame rate = {:.0f} FPS'.format(np.mean(frame_rate)))
+print('average execution time = {:.0f} milli seconds'.format(np.mean(exec_time)*1000))

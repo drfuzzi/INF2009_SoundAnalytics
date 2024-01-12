@@ -47,12 +47,12 @@
 - Capturing audio in Python.
 - Fourier Transform: Understanding frequency components of sound.
 - Visualizing sound waves (both the wave itself and the audio spectrum).
-- For above tasks, you can use the [sample code](Codes/microphone_streaming_with_spectrum)
+  - For above tasks, you can use the [sample code](Codes/microphone_streaming_with_spectrum)
   
 
 **5. Basic Sound Analytics (40 minutes)**
 - Filtering: Removing noise or specific frequencies. The [sample code](Codes/filtering_audio) illustrates a bandpass filter (only passes audio within a certain frequencies as decided by the user are kept).
-- Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.
+  - Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.
 - Feature extraction: MFCCs, chroma, and spectral contrast.
 - Basic sound classification or sound event detection.
 
@@ -64,8 +64,8 @@
   pip install pocketsphinx
   pip install SpeechRecognition
   ```
-- A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
-- The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
+  - A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
+  - The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
 - Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry PI 4
 - Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---

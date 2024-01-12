@@ -26,6 +26,8 @@
   sudo apt update
   sudo apt upgrade
   ```
+- Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a
+- Activate the virtual environment and complete the next steps within the environment
 
 **3. Connecting and Testing the Microphone (15 minutes)**
 - Physically connecting the microphone to the Raspberry Pi.
@@ -38,18 +40,15 @@
 **4. Introduction to Sound Processing with Python (20 minutes)**
 - Installing necessary Python libraries (may need additional libraries if not preinstalled with default python):
   ```bash
-  sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
-  sudo pip3 install pyaudio
-  ```
-  ```bash
-  sudo pip3 install scipy matplotlib
+  sudo apt install portaudio19-dev
+  pip3 install pyaudio
+  pip3 install scipy matplotlib
   ```
 - Capturing audio in Python.
 - Fourier Transform: Understanding frequency components of sound.
 - Visualizing sound waves (both the wave itself and the audio spectrum).
-  ```
-  For above tasks, you can use the sample file 'microphone_streaming_with_spectrum.py'
-  ```
+- For above tasks, you can use the [sample file](Codes/microphone_streaming_with_spectrum)
+  
 
 **5. Basic Sound Analytics (40 minutes)**
 - Filtering: Removing noise or specific frequencies.

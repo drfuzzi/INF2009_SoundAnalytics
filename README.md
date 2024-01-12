@@ -57,10 +57,17 @@
 - Basic sound classification or sound event detection.
 
 **6. Advanced Sound Analytics (20 minutes)**
-- Introduction to machine learning with sound.
-- Using pre-trained models or datasets for sound recognition.
-- Real-time sound analytics: e.g., identifying specific sounds or words in a live audio stream.
-
+- Introduction to machine learning with sound through speech recognition task (through [CMU Sphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).
+- Installing the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) through following commands
+  ```bash
+  sudo apt-get install flac
+  pip install pocketsphinx
+  pip install SpeechRecognition
+  ```
+- A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
+- The [sample code](Codes/microphone_recognition) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
+- Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry PI 4
+- Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---
 
 **Homework/Extended Activities:**

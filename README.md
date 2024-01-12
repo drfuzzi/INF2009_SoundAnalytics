@@ -65,7 +65,7 @@
   pip install SpeechRecognition
   ```
 - A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
-- The [sample code](Codes/microphone_recognition) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
+- The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
 - Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry PI 4
 - Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---

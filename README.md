@@ -54,8 +54,13 @@
 **5. Basic Sound Analytics (40 minutes)**
 - Filtering: Removing noise or specific frequencies. The [sample code](Codes/filtering_audio) illustrates a bandpass filter (only passes audio within a certain frequencies as decided by the user are kept).
   - Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.
-- Feature extraction: MFCCs, chroma, and spectral contrast.
-- Basic sound classification or sound event detection.
+- Feature extraction: Spectrogram, Chromogram, Mel-Spectrogram and MFFC.
+  - Install the [librosa library](https://librosa.org/doc/latest/index.html) using the command
+     ```bash
+     pip install librosa
+     ```
+  - In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
+  
 
 **6. Advanced Sound Analytics (20 minutes)**
 - Introduction to machine learning with sound through speech recognition task (through [CMU Sphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).

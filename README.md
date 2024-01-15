@@ -75,7 +75,7 @@
     A Mel Spectrogram makes two important changes relative to a regular Spectrogram that plots Frequency vs Time. It uses the Mel Scale instead of Frequency on the y-axis. It uses the Decibel Scale instead of Amplitude to indicate colors. The [Mel Scale](https://en.wikipedia.org/wiki/Mel_scale) is a perceptual scale of pitches judged by listeners to be equal in distance from one another.
   - Finally the MFCC (Mel Frequency Cepstral Coefficients) and the original Mel Spectrogram are as shown below \
     ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/d2746cc2-54a3-4eff-beb5-664813a2fcd0) \
-      
+    The [mel-frequency cepstrum (MFC)] (https://en.wikipedia.org/wiki/Mel-frequency_cepstrum) is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency.
 
 **6. Advanced Sound Analytics (20 minutes)**
 - Introduction to machine learning with sound through speech recognition task (through [CMU Sphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).

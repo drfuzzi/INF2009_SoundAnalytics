@@ -87,6 +87,10 @@
   ```
   - A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
   - The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
+  - Its important to see the 'Say Something' before you start speaking as in the initial few seconds the ambient noise is being captured.
+  - A sample display screen will look like as in below:
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bc5b4ccc-f06e-422e-b0f0-8a403e14cc65)
+    It is very clear from the screenshot that an offline (inference done on the edge device) model like Sphinx is not as effective as a Google Speech Recognition API where inference is done on the cloud. 
 - Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry PI 4
 - Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---

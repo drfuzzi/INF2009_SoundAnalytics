@@ -64,7 +64,18 @@
      pip install librosa
      ```
   - In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
-  
+  - The time series recorded through microphone and saved as test.wav (mostly speech with some background noise) and its spectrogram are shown below \
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/0ff75402-20c6-492f-9ee8-1f20c954c0a3) \
+    The [spectrogram](https://en.wikipedia.org/wiki/Spectrogram) is a visual representation of the spectrum of frequencies of a signal as it varies with time. \
+  - The spectrogram and the chromogram are shown below \
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/7be397f9-9b7e-4c98-a1ea-38dab4b2caba) \
+    In Western music, the term [chroma feature or chromagram](https://en.wikipedia.org/wiki/Chroma_feature) closely relates to twelve different pitch classes. Chroma-based features, which are also referred to as "pitch class profiles", are a powerful tool for analyzing music whose pitches can be meaningfully categorized (often into twelve categories) and whose tuning approximates to the equal-tempered scale. 
+  - The Mel-frequency spectrogram is shown below \
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/4663a522-8c0e-416f-95e3-eefe42a3696b) \
+    A Mel Spectrogram makes two important changes relative to a regular Spectrogram that plots Frequency vs Time. It uses the Mel Scale instead of Frequency on the y-axis. It uses the Decibel Scale instead of Amplitude to indicate colors. The [Mel Scale](https://en.wikipedia.org/wiki/Mel_scale) is a perceptual scale of pitches judged by listeners to be equal in distance from one another.
+  - Finally the MFCC (Mel Frequency Cepstral Coefficients) and the original Mel Spectrogram are as shown below \
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/d2746cc2-54a3-4eff-beb5-664813a2fcd0) \
+      
 
 **6. Advanced Sound Analytics (20 minutes)**
 - Introduction to machine learning with sound through speech recognition task (through [CMU Sphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).

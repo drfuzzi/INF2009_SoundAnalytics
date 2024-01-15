@@ -48,9 +48,13 @@
 - Capturing audio in Python.
 - Fourier Transform: Understanding frequency components of sound.
 - Visualizing sound waves (both the wave itself and the audio spectrum).
-  - For above tasks, you can use the [sample code](Codes/microphone_streaming_with_spectrum.py)
-  
+  - For above tasks, you can use the [sample code](Codes/microphone_streaming_with_spectrum.py). 
+  - A sample captured speech and its spectrum are shown below
+    ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/26449854-8770-46a7-ac2d-de94f8f2bc7a)
+  - The top plot shows a sample time series of the captured audio and the bottom plot shows the frequency components present in the time series. It is easier to intepret audio by its spectrum.
+  - Try speaking, making different sounds and observe how the spectrum changes.
 
+    
 **5. Basic Sound Analytics (40 minutes)**
 - Filtering: Removing noise or specific frequencies. The [sample code](Codes/filtering_audio.py) illustrates a bandpass filter (only passes audio within a certain frequencies as decided by the user are kept).
   - Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.

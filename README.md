@@ -16,8 +16,10 @@
 ---
 
 **1. Introduction (10 minutes)**
-- Overview of sound analytics and its significance.
-- Applications of sound processing with Raspberry Pi.
+Developing a computer (ideally embedded) audio listening system similar to the human hearing to make sense of sounds is one of the growing areas of research. There are various application to the same not limited to 1) voice enabled services (e.g. Alexa Dot), 2) healthcare applications (e.g. lung sound analysis /  digital stethoscope) and 3) audio chatbots (e.g. IVR services). In this lab, we will be working on ways to capture audio data, analyze it and visualize the same on Raspberry Pi 4. A basic approach for the same is as shown below:
+![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/2ecf7748-a80b-4bce-b61e-73d906d5016f)
+
+
 
 **2. Setting up the Raspberry Pi (10 minutes)**
 - Booting up the Raspberry Pi.

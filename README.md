@@ -80,7 +80,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
     The [mel-frequency cepstrum (MFC)] (https://en.wikipedia.org/wiki/Mel-frequency_cepstrum) is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency.
 
 **6. Advanced Sound Analytics (20 minutes)**
-- Introduction to machine learning with sound through speech recognition task (through [CMU Sphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).
+- Introduction to machine learning with sound through speech recognition task (through [CMUSphinx](https://cmusphinx.github.io/wiki/) and [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies).
 - Installing the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) through following commands
   ```bash
   sudo apt-get install flac
@@ -88,7 +88,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   pip install SpeechRecognition
   ```
   - A FLAC encoder (installed through above command) is required to encode the audio data to send to the API. Similarly CM Sphinx is also installed through above commands
-  - The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the Sphinx API and Google Speech Recognition APIs to predict the spoken text
+  - The [sample code](Codes/microphone_recognition.py) illustrates to record an audio, then use the CMUSphinx API and Google Speech Recognition APIs to predict the spoken text
   - Its important to see the 'Say Something' before you start speaking as in the initial few seconds the ambient noise is being captured.
   - A sample display screen will look like as in below:
     ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bc5b4ccc-f06e-422e-b0f0-8a403e14cc65)

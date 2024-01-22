@@ -106,7 +106,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
 
 **Resources:**
 1. Raspberry Pi official documentation.
-2. Python sound processing library documentation (e.g., `librosa`, `soundfile`).
+2. Python sound processing library documentation (e.g., `librosa`, `pyaudio`, `speech_recognition`).
 3. Online communities and forums related to Raspberry Pi and sound analytics.
 
 ---

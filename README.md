@@ -17,9 +17,7 @@
 
 **1. Introduction (10 minutes)**
 Developing a computer (ideally embedded) aided audio listening system similar to the human hearing to make sense of sounds is one of the growing areas of research. There are various application to the same not limited to 1) voice enabled services (e.g. Alexa Dot), 2) healthcare applications (e.g. lung sound analysis /  digital stethoscope) and 3) audio chatbots (e.g. IVR services). In this lab, we will be working on ways to capture audio data, analyze it and visualize the same on Raspberry Pi 4. A basic approach for the same is as shown below:
-![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/2ecf7748-a80b-4bce-b61e-73d906d5016f)
-
-
+![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bb9a2d8a-b4ae-4207-8272-21162987c821)
 
 **2. Setting up the Raspberry Pi (10 minutes)**
 - Booting up the Raspberry Pi.
@@ -29,8 +27,8 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   sudo apt update
   sudo apt upgrade
   ```
-- Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a
-- Activate the virtual environment and complete the next steps within the environment
+- **Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a**
+- **Activate the virtual environment and complete the next steps within the environment**
 
 **3. Connecting and Testing the Microphone (15 minutes)**
 - Physically connecting the microphone to the Raspberry Pi.
@@ -45,12 +43,16 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   ```bash
   sudo apt install portaudio19-dev
   pip3 install pyaudio
+  pip3 install sounddevice
   pip3 install scipy matplotlib
   ```
+  **Note that you need either pyaudio or sounddevice to record the audio stream from microphone**
 - Capturing audio in Python.
 - Fourier Transform: Understanding frequency components of sound.
 - Visualizing sound waves (both the wave itself and the audio spectrum).
-  - For above tasks, you can use the [sample code](Codes/microphone_streaming_with_spectrum.py). 
+  - For above tasks, you can use the
+     - [sample code](Codes/microphone_streaming_with_spectrum.py) if you are using *pyaudio*.
+     - [sample code](Codes/microphone_streaming_with_spectrum_updated.py) if you are using *sounddevice*. 
   - A sample captured speech and its spectrum are shown below
     ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/26449854-8770-46a7-ac2d-de94f8f2bc7a)
   - The top plot shows a sample time series of the captured audio and the bottom plot shows the frequency components present in the time series. It is easier to intepret audio by its spectrum.
@@ -58,7 +60,10 @@ Developing a computer (ideally embedded) aided audio listening system similar to
 
     
 **5. Basic Sound Analytics (40 minutes)**
-- Filtering: Removing noise or specific frequencies. The [sample code](Codes/filtering_audio.py) illustrates a bandpass filter (only passes audio within a certain frequencies as decided by the user are kept).
+- Filtering: Removing noise or specific frequencies. The below code illustrates a bandpass filter (only passes audio within a certain frequencies as decided by the user are kept).
+- For the filtering task, you can use the
+  - [sample code](Codes/filtering_audio.py) if you are using *pyaudio*.
+  - [sample code](Codes/filtering_audio_updated.py) if you are using *sounddevice*.
   - Using the audio spectrum visualization, identify the frequency to be kept (e.g. tap sound or some particular sound) and change the above code accordingly.
 - Feature extraction: Spectrogram, Chromogram, Mel-Spectrogram and MFFC.
   - Install the [librosa library](https://librosa.org/doc/latest/index.html) using the command

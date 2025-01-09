@@ -1,11 +1,11 @@
-**Sound Analytics with Raspberry Pi 4 using Microphone**
+**Sound Analytics with Raspberry Pi 4/3 using Microphone**
 
-**Objective:** By the end of this session, participants will understand how to set up a microphone with the Raspberry Pi 4, capture audio, and conduct basic sound analytics.
+**Objective:** By the end of this session, participants will understand how to set up a microphone with the Raspberry Pi 4/3, capture audio, and conduct basic sound analytics.
 
 ---
 
 **Prerequisites:**
-1. Raspberry Pi 4 with Raspbian OS installed.
+1. Raspberry Pi 4/3 with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
 3. USB keyboard, mouse, and monitor. You can also use Real VNC to access the Rasperry Pi (Need to enable VNC configuration in your Pi)
 4. USB microphone compatible with Raspberry Pi.

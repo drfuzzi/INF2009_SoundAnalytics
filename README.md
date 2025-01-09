@@ -106,7 +106,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
 - Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---
 
-**Homework/Extended Activities:**
+**[Optional] Homework/Extended Activities:**
 1. Build a voice-activated command system.
 2. Create a basic sound classifier using a dataset of various sounds.
 3. Experiment with sound effects: reverb, echo, and pitch alteration.

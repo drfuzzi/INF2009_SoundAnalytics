@@ -27,8 +27,11 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   sudo apt update
   sudo apt upgrade
   ```
-- **Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a**
-- **Activate the virtual environment and complete the next steps within the environment**
+- **[Important!] Set up and activate a virtual environment named "audio" for this experiment (to avoid conflicts in libraries) as below**
+  ```bash
+  sudo apt install python3-venv
+  python3 -m venv audio
+  source audio/bin/activate
 
 **3. Connecting and Testing the Microphone (15 minutes)**
 - Physically connecting the microphone to the Raspberry Pi.
@@ -37,6 +40,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   arecord --duration=10 test.wav
   aplay test.wav
   ```
+- Don't delete the .wav file as that will be used later for feature extraction
 
 **4. Introduction to Sound Processing with Python (20 minutes)**
 - Installing necessary Python libraries (may need additional libraries if not preinstalled with default python):

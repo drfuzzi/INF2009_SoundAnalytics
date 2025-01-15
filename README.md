@@ -1,11 +1,11 @@
 **Sound Analytics with Raspberry Pi 4/3 using Microphone**
 
-**Objective:** By the end of this session, participants will understand how to set up a microphone with the Raspberry Pi 4/3, capture audio, and conduct basic sound analytics.
+**Objective:** By the end of this session, participants will understand how to set up a microphone with the Raspberry Pi, capture audio, and conduct basic sound analytics.
 
 ---
 
 **Prerequisites:**
-1. Raspberry Pi 4/3 with Raspbian OS installed.
+1. Raspberry Pi with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
 3. USB keyboard, mouse, and monitor. You can also use Real VNC to access the Rasperry Pi (Need to enable VNC configuration in your Pi)
 4. USB microphone compatible with Raspberry Pi.
@@ -16,7 +16,7 @@
 ---
 
 **1. Introduction (10 minutes)**
-Developing a computer (ideally embedded) aided audio listening system similar to the human hearing to make sense of sounds is one of the growing areas of research. There are various application to the same not limited to 1) voice enabled services (e.g. Alexa Dot), 2) healthcare applications (e.g. lung sound analysis /  digital stethoscope) and 3) audio chatbots (e.g. IVR services). In this lab, we will be working on ways to capture audio data, analyze it and visualize the same on Raspberry Pi 4. A basic approach for the same is as shown below:
+Developing a computer (ideally embedded) aided audio listening system similar to the human hearing to make sense of sounds is one of the growing areas of research. There are various application to the same not limited to 1) voice enabled services (e.g. Alexa Dot), 2) healthcare applications (e.g. lung sound analysis /  digital stethoscope) and 3) audio chatbots (e.g. IVR services). In this lab, we will be working on ways to capture audio data, analyze it and visualize the same on Raspberry Pi. A basic approach for the same is as shown below:
 ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bb9a2d8a-b4ae-4207-8272-21162987c821)
 
 **2. Setting up the Raspberry Pi (10 minutes)**
@@ -102,7 +102,7 @@ Developing a computer (ideally embedded) aided audio listening system similar to
   - A sample display screen will look like as in below:
     ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bc5b4ccc-f06e-422e-b0f0-8a403e14cc65)
     It is very clear from the screenshot that an offline (inference done on the edge device) model like Sphinx is not as effective as a Google Speech Recognition API where inference is done on the cloud. 
-- Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry PI 4
+- Employ other speech recognition APIs provided in the [speech_recognition library](https://github.com/Uberi/speech_recognition#readme) and compare the performance on Rasperry Pi
 - Modify the code to identify certain words in the generated (predicted text) which can form the basis for 'wake word' based system control (e.g. Ok Google, Alexa or Siri) 
 ---
 

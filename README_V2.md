@@ -30,8 +30,6 @@ This hands-on approach will provide practical experience in embedded audio proce
 
 To ensure the lab is reproducible and avoids common environment errors, we use a dedicated virtual environment and a requirements file.
 
-> **Note to Students:** In the commands below, `audio_env` is simply a **label** for your virtual environment. You can choose any name you like (e.g., `lab1_env` or `my_sound_project`), but you must use that same name consistently when activating it.
-
 ### Step A: Install System Dependencies
 
 Install the low-level audio I/O library and the FLAC encoder needed for cloud communication:
@@ -43,6 +41,8 @@ sudo apt install -y portaudio19-dev flac python3-venv
 ```
 
 ### Step B: Create and Activate Virtual Environment
+
+> **Note to Students:** In the commands below, `audio_env` is simply a **label** for your virtual environment. You can choose any name you like (e.g., `lab1_env` or `my_sound_project`), but you must use that same name consistently when activating it.
 
 1. **Create the environment** (using `audio_env` as the label):
 ```bash

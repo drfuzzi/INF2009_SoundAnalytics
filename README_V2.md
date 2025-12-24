@@ -15,7 +15,12 @@
 
 Developing an embedded audio listening system that emulates human hearing to interpret and process sounds is an emerging and impactful area of research. Such systems have diverse applications, including voice-enabled services like smart assistants (e.g., Amazon Alexa), healthcare solutions such as lung sound analysis and digital stethoscopes, and audio-based conversational interfaces like IVR systems and chatbots. These technologies aim to make sense of complex audio environments and deliver meaningful insights for real-world use cases.
 
-In this lab, we will focus on building a system using Raspberry Pi to capture audio data, analyze it, and visualize the results. The workflow involves three key steps: **acquiring audio signals** through sensors or microphones, **applying signal processing techniques** to extract relevant features, and presenting the processed data in an intuitive **visual format**. This hands-on approach will provide practical experience in embedded audio processing and demonstrate how such systems can be applied across multiple domains.
+In this lab, we will focus on building a system using Raspberry Pi to capture audio data, analyze it, and visualize the results. The workflow involves three key steps:
+- acquiring audio signals through sensors or microphones
+- applying signal processing techniques to extract relevant features
+- presenting the processed data in an intuitive visual format.
+
+This hands-on approach will provide practical experience in embedded audio processing and demonstrate how such systems can be applied across multiple domains.
 
 ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/bb9a2d8a-b4ae-4207-8272-21162987c821)
 

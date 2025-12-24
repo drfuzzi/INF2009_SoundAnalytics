@@ -101,7 +101,7 @@ aplay test.wav
 
 ## 4. Edge Computing Module: Performance Benchmarking
 
-Edge computing requires balancing audio quality with CPU load. This exercise compares the "cost" of different sample rates.
+Edge computing requires balancing audio quality with CPU load. This exercise compares the "cost" of different sample rates by measuring the execution time and data overhead.
 
 **Exercise: Latency Test**
 
@@ -112,16 +112,18 @@ import time
 def benchmark_sample_rate(rate, duration=3):
     print(f"Testing {rate}Hz...")
     start = time.perf_counter()
+    # Capture audio at the specified rate
     recording = sd.rec(int(duration * rate), samplerate=rate, channels=1)
-    sd.wait() 
+    sd.wait() # Wait for recording to finish
     end = time.perf_counter()
     print(f"Process took: {end-start:.4f}s")
 
+# Test high-fidelity vs. edge-standard rates
 benchmark_sample_rate(44100) # CD Quality
 benchmark_sample_rate(16000) # Speech Quality (Standard for Edge AI)
 
 ```
-
+> *Observe the 'Process took' time for both tests. Even though both recorded for exactly 3 seconds, you may notice a slight increase in time for the 44100Hz test. Considering that 44.1kHz generates ~132,000 samples while 16kHz generates only ~48,000 samples, why is it often better to use a lower sample rate for real-time analytics on an edge device like the Raspberry Pi? Using a lower sample rate like 16kHz naturally results in a loss of audio high-frequency detail (accuracy). When is it acceptable to accept this "loss of quality," and when would it be a failure for your edge system?*
 ---
 
 ## 5. Analytics Module: Feature Extraction

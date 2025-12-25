@@ -130,7 +130,7 @@ benchmark_sample_rate(16000) # Speech Quality (Standard for Edge AI)
 
 ### A. Pre-Processing: The Bandpass Filter
 
-Before extracting features, we remove unwanted noise. A **Bandpass Filter** allows frequencies within a specific range to pass through while blocking others. This is essential for isolating a specific sound, like a "tap" or a human voice, from background hum. Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound.
+Before extracting features, we remove unwanted noise. A **Bandpass Filter** allows frequencies within a specific range to pass through while blocking others. This is essential for isolating a specific sound, like a "tap" or a human voice, from background hum. 
 
 ```python
 import numpy as np
@@ -148,9 +148,9 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
 
 ```
 
-### B. Feature Extraction & Fingerprinting
+### B. Feature Extraction & Fingerprinting (Visualization)
 
-We use `librosa` to convert the time-series data into mathematical representations. This version adds the **Chromagram** (which the new manual missing code for) back into the visualization.
+Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound. `librosa` is used to convert the time-series data into mathematical representations. 
 
 ```python
 import librosa

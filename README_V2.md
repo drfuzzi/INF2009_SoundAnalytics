@@ -152,6 +152,15 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
 
 Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound. `librosa` is used to convert the time-series data into mathematical representations. 
 
+The spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time.
+ ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/0ff75402-20c6-492f-9ee8-1f20c954c0a3)
+ 
+In Western music, the term chroma feature or chromagram closely relates to twelve different pitch classes. Chroma-based features, which are also referred to as "pitch class profiles", are a powerful tool for analyzing music whose pitches can be meaningfully categorized (often into twelve categories) and whose tuning approximates to the equal-tempered scale.
+![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/7be397f9-9b7e-4c98-a1ea-38dab4b2caba)
+
+A Mel Spectrogram makes two important changes relative to a regular Spectrogram that plots Frequency vs Time. It uses the Mel Scale instead of Frequency on the y-axis. It uses the Decibel Scale instead of Amplitude to indicate colors. The Mel Scale is a perceptual scale of pitches judged by listeners to be equal in distance from one another.
+![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/4663a522-8c0e-416f-95e3-eefe42a3696b)
+
 ```python
 import librosa
 import librosa.display

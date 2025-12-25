@@ -250,38 +250,6 @@ plt.show()
 | **Chromagram** | Harmonic/Musical Note | "What note is that whistle humming?" |
 | **MFCC** | Texture & Timbre | "Is that a human voice or a guitar string?" |
 
-
----
-
-### Audio Feature Comparison Table
-
-**Exercise: Plotting MFCCs**
-
-```python
-import librosa
-import librosa.display
-import matplotlib.pyplot as plt
-import numpy as np
-
-y, sr = librosa.load('test.wav')
-
-plt.figure(figsize=(10, 6))
-# Plot Spectrogram
-plt.subplot(2, 1, 1)
-S = librosa.feature.melspectrogram(y=y, sr=sr)
-librosa.display.specshow(librosa.power_to_db(S, ref=np.max), x_axis='time', y_axis='mel')
-plt.title('Mel Spectrogram')
-
-# Plot MFCCs
-plt.subplot(2, 1, 2)
-mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
-librosa.display.specshow(mfccs, x_axis='time')
-plt.title('MFCC Fingerprint')
-plt.tight_layout()
-plt.show()
-
-```
-
 ---
 
 ## 6. Advanced Module: Hybrid Edge-to-Cloud Recognition

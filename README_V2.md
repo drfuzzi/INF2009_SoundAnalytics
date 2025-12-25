@@ -357,6 +357,8 @@ with mic as source:
 * **Observation:** This is the only scenario where the data traveled to the internet. The high accuracy of the final sentence is thanks to the Cloud's massive neural networks.
 
 ---
+In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
+---
 
 **Why this matters for Edge Computing**
 In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.

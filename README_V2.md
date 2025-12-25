@@ -254,7 +254,11 @@ plt.show()
 
 ## 6. Advanced Module: Hybrid Edge-to-Cloud Recognition
 
-This demonstrates a hybrid architecture: the Pi handles volume detection locally (Edge Trigger) and only uses the Cloud when a threshold is met to save bandwidth.
+Tier 1 (Local): Use the RMS threshold (volume check) to filter out silence.
+
+Tier 2 (Local Edge AI): Use [CMUSphinx](https://cmusphinx.github.io/wiki/) to recognize a specific "Wake Word" (e.g., "hello"). This runs entirely offline.
+
+Tier 3 (Cloud AI): If the wake word is detected, only then do we send the audio to [Google Speech Recognition](https://github.com/Uberi/speech_recognition/tree/master/third-party/Source%20code%20for%20Google%20API%20Client%20Library%20for%20Python%20and%20its%20dependencies) for high-accuracy transcription.
 
 ```python
 import speech_recognition as sr
@@ -263,23 +267,44 @@ import numpy as np
 r = sr.Recognizer()
 mic = sr.Microphone()
 
+# Note: You must have 'pocketsphinx' installed: pip install pocketsphinx
+WAKE_WORD = "hello"
+
 with mic as source:
-    print("Listening... (Edge Threshold: RMS 500)")
+    print(f"Listening... (Threshold: RMS 500 | Wake Word: '{WAKE_WORD}')")
     r.adjust_for_ambient_noise(source)
     audio = r.listen(source)
     
-    # Calculate volume locally
+    # --- TIER 1: Local Volume Check ---
     data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
     rms = np.sqrt(np.mean(data**2))
     
     if rms > 500:
-        print("Threshold met! Sending to Google Cloud...")
-        print("Recognized: " + r.recognize_google(audio))
+        print(f"Sound detected ({rms:.0f} RMS). Checking for Wake Word via CMUSphinx...")
+        
+        try:
+            # --- TIER 2: Local Wake Word Recognition (Offline) ---
+            # Sphinx is fast and private but less accurate for long sentences.
+            local_recognition = r.recognize_sphinx(audio).lower()
+            
+            if WAKE_WORD in local_recognition:
+                print(f"Wake word '{WAKE_WORD}' detected! Sending to Google Cloud...")
+                
+                # --- TIER 3: Cloud Recognition (Online) ---
+                # Only use Google for the heavy lifting.
+                text = r.recognize_google(audio)
+                print("Google Cloud Recognized: " + text)
+            else:
+                print(f"Local Sphinx heard '{local_recognition}', not the wake word. Ignoring.")
+                
+        except sr.UnknownValueError:
+            print("Sphinx could not understand the audio.")
+        except sr.RequestError as e:
+            print(f"Sphinx error; {e}")
+            
     else:
         print(f"Sound too quiet ({rms:.0f} RMS). Ignored at the Edge.")
 
 ```
 
 ---
-
-**Would you like me to generate the `requirements.txt` file content as a standalone code block for your GitHub repository?**

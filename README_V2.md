@@ -128,6 +128,14 @@ benchmark_sample_rate(16000) # Speech Quality (Standard for Edge AI)
 
 ## 5. Sound Analytics: Filter (Clean) $\rightarrow$ Transform (Visualize) $\rightarrow$ Extract (Analyze).
 
+| Feature | Mathematical Basis | Best For |
+| --- | --- | --- |
+| **Bandpass Filter** | Signal Attenuation | Removing background noise/static. |
+| **Mel Spectrogram** | Log-scale Frequency | General event detection (glass break, alarm). |
+| **Chromagram** | 12 Pitch Classes | Music analysis, identifying specific tones. |
+| **MFCC** | Cosine Transform of Log Spectrum | Speech recognition and identifying "who" or "what" made the sound. |
+
+
 ### A. Pre-Processing: The Bandpass Filter
 
 Before extracting features, we remove unwanted noise. A **Bandpass Filter** allows frequencies within a specific range to pass through while blocking others. This is essential for isolating a specific sound, like a "tap" or a human voice, from background hum. 
@@ -160,6 +168,42 @@ In Western music, the term chroma feature or chromagram closely relates to twelv
 
 A Mel Spectrogram makes two important changes relative to a regular Spectrogram that plots Frequency vs Time. It uses the Mel Scale instead of Frequency on the y-axis. It uses the Decibel Scale instead of Amplitude to indicate colors. The Mel Scale is a perceptual scale of pitches judged by listeners to be equal in distance from one another.
 ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/4663a522-8c0e-416f-95e3-eefe42a3696b)
+
+This code is designed to take a raw audio file and decompose it into three distinct "mathematical lenses." Each lens reveals a different characteristic of the sound: its **energy**, its **pitch**, and its **texture**.
+
+Here is the breakdown of the three key features:
+
+---
+
+### 1. Mel Spectrogram (The "Energy Map")
+
+The code `librosa.feature.melspectrogram` calculates how much energy (loudness) exists at different frequencies over time.
+
+* **The "Mel" Difference:** Standard spectrograms use a linear scale (Hertz). However, humans are much better at detecting changes in low frequencies than high ones. The **Mel Scale** warps the frequency axis to mimic human hearing.
+* **The Math:** `librosa.power_to_db` converts the raw power into **Decibels**. This is essential because human hearing is logarithmic; without this conversion, quiet background noises would be invisible on the graph.
+* **Use Case:** Identifying *when* a sound happened and how much "punch" or energy it had.
+
+---
+
+### 2. Chromagram (The "Musical/Pitch Map")
+
+The code `librosa.feature.chroma_stft` creates a "Chroma" representation. This is the most "musical" of the three features.
+
+* **How it works:** It maps the entire frequency spectrum into **12 bins**, corresponding to the 12 semitones of the Western musical scale (C, C#, D, D#, etc.).
+* **Octave Agnostic:** It ignores how high or low a note is (the octave) and only focuses on the **pitch class**. For example, a "High C" and a "Low C" will both show up in the same bin.
+* **Use Case:** Identifying chords, melodies, or harmonic content. If you are analyzing a machine and it starts "whining" at a specific musical note, the Chromagram will catch it.
+
+---
+
+### 3. MFCC: Mel Frequency Cepstral Coefficients (The "Fingerprint")
+
+The code `librosa.feature.mfcc` generates the most compressed and powerful feature for machine learning.
+
+* **The "Shape" of Sound:** If a Spectrogram shows "what" frequencies are present, the MFCC shows the **overall envelope** or "shape" of the sound. In humans, this represents the physical shape of the vocal tract (throat and mouth) while speaking.
+* **Dimensionality Reduction:** Instead of thousands of frequency points, we use `n_mfcc=13` to condense the sound into just 13 coefficients. This makes it "lightweight" enough for edge devices (like a smart speaker) to process in real-time.
+* **Use Case:** **Speech Recognition** and **Voice Biometrics**. It is the "fingerprint" that allows a computer to distinguish between a "Ba" sound and a "Pa" sound, or between User A and User B.
+
+---
 
 ```python
 import librosa
@@ -198,16 +242,18 @@ plt.show()
 
 ```
 
+### Summary of Differences
+
+| Feature | Focus | Human Equivalent |
+| --- | --- | --- |
+| **Mel Spectrogram** | Volume & Frequency | "How loud was that high-pitched beep?" |
+| **Chromagram** | Harmonic/Musical Note | "What note is that whistle humming?" |
+| **MFCC** | Texture & Timbre | "Is that a human voice or a guitar string?" |
+
+
 ---
 
 ### Audio Feature Comparison Table
-
-| Feature | Mathematical Basis | Best For |
-| --- | --- | --- |
-| **Bandpass Filter** | Signal Attenuation | Removing background noise/static. |
-| **Mel Spectrogram** | Log-scale Frequency | General event detection (glass break, alarm). |
-| **Chromagram** | 12 Pitch Classes | Music analysis, identifying specific tones. |
-| **MFCC** | Cosine Transform of Log Spectrum | Speech recognition and identifying "who" or "what" made the sound. |
 
 **Exercise: Plotting MFCCs**
 

@@ -307,6 +307,57 @@ with mic as source:
 
 ```
 
+### Test Scenario 1: The "Silence/Ambient" Test
+
+**Objective:** Observe the first line of defense (Tier 1: Energy Threshold).
+
+* **Student Action:** Run the script and sit in total silence for 5 seconds.
+* **Expected Console Output:**
+> `Listening... (Threshold: RMS 500 | Wake Word: 'hello')`
+> `Sound too quiet (112 RMS). Ignored at the Edge.`
+
+
+* **Observation:** The code didn't even try to "read" the audio. It calculated a single number (RMS) and stopped because it was below 500.
+
+### Test Scenario 2: The "Sharp Noise" Test (Non-Speech)
+
+**Objective:** Observe Tier 2 rejecting loud sounds that aren't human language.
+
+* **Student Action:** Clap your hands loudly or tap the table near the microphone.
+* **Expected Console Output:**
+> `Sound detected (2150 RMS). Checking for Wake Word via CMUSphinx...`
+> `Sphinx could not understand the audio.`
+
+
+* **Observation:** The sound was loud enough to pass Tier 1, but the "Local Brain" (Sphinx) couldn't find any phonetic patterns that look like words, so it crashed out.
+
+### Test Scenario 3: The "Wrong Intent" Test
+
+**Objective:** Observe the Wake Word filter (Tier 2 preventing Tier 3).
+
+* **Student Action:** Say clearly, *"Good morning, how is the weather?"*
+* **Expected Console Output:**
+> `Sound detected (1800 RMS). Checking for Wake Word via CMUSphinx...`
+> `Local Sphinx heard 'good morning how is the weather', not the wake word. Ignoring.`
+
+
+* **Observation:** The device "understood" you locally, but because you didn't say **"hello"**, it protected your privacy and saved your API quota by **not** sending the data to Google Cloud.
+
+### Test Scenario 4: The "Full Pipeline" Test
+
+**Objective:** Observe the successful handoff from Edge to Cloud.
+
+* **Student Action:** Say, *"Hello, tell me a joke."*
+* **Expected Console Output:**
+> `Sound detected (2450 RMS). Checking for Wake Word via CMUSphinx...`
+> `Wake word 'hello' detected! Sending to Google Cloud...`
+> `Google Cloud Recognized: hello tell me a joke`
+
+
+* **Observation:** This is the only scenario where the data traveled to the internet. The high accuracy of the final sentence is thanks to the Cloud's massive neural networks.
+
+---
+
 **Why this matters for Edge Computing**
 In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
 ---

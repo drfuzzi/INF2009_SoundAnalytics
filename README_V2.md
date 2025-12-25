@@ -126,7 +126,7 @@ benchmark_sample_rate(16000) # Speech Quality (Standard for Edge AI)
 > *Observe the 'Process took' time for both tests. Even though both recorded for exactly 3 seconds, you may notice a slight increase in time for the 44100Hz test. Considering that 44.1kHz generates ~132,000 samples while 16kHz generates only ~48,000 samples, why is it often better to use a lower sample rate for real-time analytics on an edge device like the Raspberry Pi? Using a lower sample rate like 16kHz naturally results in a loss of audio high-frequency detail (accuracy). When is it acceptable to accept this "loss of quality," and when would it be a failure for your edge system?*
 ---
 
-## 5. Analytics Module: Feature Extraction
+## 5. Sound Analytics: Filter (Clean) $\rightarrow$ Transform (Visualize) $\rightarrow$ Extract (Analyze).
 
 Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound.
 

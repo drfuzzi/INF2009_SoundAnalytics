@@ -128,15 +128,77 @@ benchmark_sample_rate(16000) # Speech Quality (Standard for Edge AI)
 
 ## 5. Sound Analytics: Filter (Clean) $\rightarrow$ Transform (Visualize) $\rightarrow$ Extract (Analyze).
 
-Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound.
+### A. Pre-Processing: The Bandpass Filter
+
+Before extracting features, we remove unwanted noise. A **Bandpass Filter** allows frequencies within a specific range to pass through while blocking others. This is essential for isolating a specific sound, like a "tap" or a human voice, from background hum. Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound.
+
+```python
+import numpy as np
+from scipy.signal import butter, lfilter
+
+def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    return lfilter(b, a, data)
+
+# Example: Keeping only frequencies between 500Hz and 4000Hz (Speech range)
+# filtered_audio = butter_bandpass_filter(y, 500, 4000, sr)
+
+```
+
+### B. Feature Extraction & Fingerprinting
+
+We use `librosa` to convert the time-series data into mathematical representations. This version adds the **Chromagram** (which the new manual missing code for) back into the visualization.
+
+```python
+import librosa
+import librosa.display
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. Load the audio
+y, sr = librosa.load('test.wav')
+
+plt.figure(figsize=(12, 10))
+
+# --- Plot 1: Mel Spectrogram (Human Perception) ---
+plt.subplot(3, 1, 1)
+S = librosa.feature.melspectrogram(y=y, sr=sr)
+librosa.display.specshow(librosa.power_to_db(S, ref=np.max), x_axis='time', y_axis='mel')
+plt.title('Mel Spectrogram (Energy across Perceptual Frequencies)')
+plt.colorbar(format='%+2.0f dB')
+
+# --- Plot 2: Chromagram (Musical/Pitch Classes) ---
+plt.subplot(3, 1, 2)
+chroma = librosa.feature.chroma_stft(y=y, sr=sr)
+librosa.display.specshow(chroma, y_axis='chroma', x_axis='time')
+plt.title('Chromagram (12 Pitch Classes / Notes)')
+plt.colorbar()
+
+# --- Plot 3: MFCCs (The Sound "Fingerprint") ---
+plt.subplot(3, 1, 3)
+mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+librosa.display.specshow(mfccs, x_axis='time')
+plt.title('MFCC Fingerprint (Vocal Tract Shape)')
+plt.colorbar()
+
+plt.tight_layout()
+plt.show()
+
+```
+
+---
 
 ### Audio Feature Comparison Table
 
-| Feature | What it represents | Edge Use Case |
+| Feature | Mathematical Basis | Best For |
 | --- | --- | --- |
-| **Spectrogram** | Energy across different frequencies over time. | Detecting specific events (e.g., glass breaking). |
-| **Chromagram** | Twelve different pitch classes (musical notes). | Analyzing music or harmonic sounds. |
-| **MFCC** | The "shape" of the vocal tract or sound source. | Speech Recognition and Voice Assistants. |
+| **Bandpass Filter** | Signal Attenuation | Removing background noise/static. |
+| **Mel Spectrogram** | Log-scale Frequency | General event detection (glass break, alarm). |
+| **Chromagram** | 12 Pitch Classes | Music analysis, identifying specific tones. |
+| **MFCC** | Cosine Transform of Log Spectrum | Speech recognition and identifying "who" or "what" made the sound. |
 
 **Exercise: Plotting MFCCs**
 

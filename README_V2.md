@@ -306,6 +306,7 @@ with mic as source:
         print(f"Sound too quiet ({rms:.0f} RMS). Ignored at the Edge.")
 
 ```
+
 ---
 
 ### Test Scenario 1: The "Silence/Ambient" Test
@@ -319,6 +320,7 @@ with mic as source:
 
 
 * **Observation:** The code didn't even try to "read" the audio. It calculated a single number (RMS) and stopped because it was below 500.
+
 ---
 
 ### Test Scenario 2: The "Sharp Noise" Test (Non-Speech)
@@ -332,6 +334,7 @@ with mic as source:
 
 
 * **Observation:** The sound was loud enough to pass Tier 1, but the "Local Brain" (Sphinx) couldn't find any phonetic patterns that look like words, so it crashed out.
+
 ---
 
 ### Test Scenario 3: The "Wrong Intent" Test
@@ -345,6 +348,7 @@ with mic as source:
 
 
 * **Observation:** The device "understood" you locally, but because you didn't say **"hello"**, it protected your privacy and saved your API quota by **not** sending the data to Google Cloud.
+
 ---
 
 ### Test Scenario 4: The "Full Pipeline" Test
@@ -363,8 +367,10 @@ with mic as source:
 ---
 
 In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
+
 ---
 
 **Why this matters for Edge Computing**
 In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
+
 ---

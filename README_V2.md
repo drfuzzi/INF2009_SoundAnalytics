@@ -427,9 +427,6 @@ Perform the following tests and note down your findings:
 2. **The Brain Power:** Why did CMUSphinx struggle with the "Complex Sentence" compared to Google?
 3. **Real-world Application:** If you were building a **Voice-Controlled Car**, which engine would you use for "STOP NOW!" and why?
 
-
-In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
-
 ---
 
 **Why this matters for Edge Computing**

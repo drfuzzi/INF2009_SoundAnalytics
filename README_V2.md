@@ -366,6 +366,68 @@ with mic as source:
 
 ---
 
+## Exercise: Latency vs. Accuracy Investigation
+
+In this task, we compare **CMUSphinx** (Local/Edge) and **Google Cloud** (Remote/Cloud). While the Cloud is more "intelligent," it requires sending data over the network, which introduces a delay.
+
+### 1. Modified Code for Performance Profiling
+
+Ask students to use this version of the script, which uses `time.time()` to measure exactly how long each engine takes to respond.
+
+```python
+import time
+import speech_recognition as sr
+
+r = sr.Recognizer()
+# ... (inside your microphone context manager)
+
+# --- Timing CMUSphinx (Edge) ---
+start_edge = time.time()
+try:
+    edge_text = r.recognize_sphinx(audio)
+    edge_latency = time.time() - start_edge
+    print(f"Edge Result: '{edge_text}' | Latency: {edge_latency:.2f}s")
+except:
+    print("Edge failed.")
+
+# --- Timing Google Cloud (Cloud) ---
+start_cloud = time.time()
+try:
+    cloud_text = r.recognize_google(audio)
+    cloud_latency = time.time() - start_cloud
+    print(f"Cloud Result: '{cloud_text}' | Latency: {cloud_latency:.2f}s")
+except:
+    print("Cloud failed.")
+
+```
+
+---
+
+### 2. Student Exploration Task
+
+Perform the following tests and note down your findings:
+
+* **Test A (Simple):** Say a single, clear word (e.g., "Apple").
+* **Test B (Complex):** Say a long, complex sentence (e.g., "The thermodynamic properties of the engine were fluctuating.")
+* **Test C (Noisy):** Say "Hello" while playing music or background noise.
+
+#### Observations Table
+
+| Test Case | Edge Latency (s) | Cloud Latency (s) | Which was more accurate? |
+| --- | --- | --- | --- |
+| **Simple Word** |  |  |  |
+| **Complex Sentence** |  |  |  |
+| **Noisy Environment** |  |  |  |
+
+---
+
+### 3. Discussion Questions
+
+1. **The Bottleneck:** Why is the Cloud Latency usually much higher than Edge Latency? (Hint: Think about `upload speed` and `server processing`).
+2. **The Brain Power:** Why did CMUSphinx struggle with the "Complex Sentence" compared to Google?
+3. **Real-world Application:** If you were building a **Voice-Controlled Car**, which engine would you use for "STOP NOW!" and why?
+
+
 In this section, we will explore various features which can be extracted from speech/audio time series employing the librosa library. A [sample code](https://github.com/drfuzzi/INF2009_SoundAnalytics/blob/main/Codes/audio_features.py) which shows how to extract the above features is available for testing.
 
 ---

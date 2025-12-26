@@ -211,7 +211,6 @@ This code is designed to take a raw audio file and decompose it into three disti
 
 Here is the breakdown of the three key features:
 
----
 
 ### 1. Mel Spectrogram (The "Energy Map")
 
@@ -221,7 +220,6 @@ The code `librosa.feature.melspectrogram` calculates how much energy (loudness) 
 * **The Math:** `librosa.power_to_db` converts the raw power into **Decibels**. This is essential because human hearing is logarithmic; without this conversion, quiet background noises would be invisible on the graph.
 * **Use Case:** Identifying *when* a sound happened and how much "punch" or energy it had.
 
----
 
 ### 2. Chromagram (The "Musical/Pitch Map")
 
@@ -231,7 +229,6 @@ The code `librosa.feature.chroma_stft` creates a "Chroma" representation. This i
 * **Octave Agnostic:** It ignores how high or low a note is (the octave) and only focuses on the **pitch class**. For example, a "High C" and a "Low C" will both show up in the same bin.
 * **Use Case:** Identifying chords, melodies, or harmonic content. If you are analyzing a machine and it starts "whining" at a specific musical note, the Chromagram will catch it.
 
----
 
 ### 3. MFCC: Mel Frequency Cepstral Coefficients (The "Fingerprint")
 

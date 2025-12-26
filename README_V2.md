@@ -402,6 +402,10 @@ except:
 
 ```
 
+**Why this matters for Edge Computing**
+In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
+
+
 ---
 
 ### 2. Student Exploration Task
@@ -430,7 +434,3 @@ Perform the following tests and note down your findings:
 
 ---
 
-**Why this matters for Edge Computing**
-In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
-
----

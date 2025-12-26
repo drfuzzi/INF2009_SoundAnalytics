@@ -367,6 +367,11 @@ with mic as source:
 
 ---
 
+**Why this matters for Edge Computing**
+In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
+
+---
+
 ## Exercise: Latency vs. Accuracy Investigation
 
 In this task, we compare **CMUSphinx** (Local/Edge) and **Google Cloud** (Remote/Cloud). While the Cloud is more "intelligent," it requires sending data over the network, which introduces a delay.
@@ -401,10 +406,6 @@ except:
     print("Cloud failed.")
 
 ```
-
-**Why this matters for Edge Computing**
-In a real-world scenario (like a smart mirror or a robot), the device doesn't have the battery life to stream audio to the cloud 24/7. This code mimics a "Low Power Mode" where the cloud is only engaged when the local processor is "sure" there is something worth transcribing.
-
 
 ---
 

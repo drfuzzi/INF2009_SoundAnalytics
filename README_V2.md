@@ -72,6 +72,7 @@ scipy
 matplotlib
 librosa
 SpeechRecognition
+swig
 pocketsphinx
 
 ```
@@ -160,6 +161,43 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
 
 Raw audio is too large for real-time edge analysis. We extract mathematical "fingerprints" to understand sound. `librosa` is used to convert the time-series data into mathematical representations. 
 
+```python
+import librosa
+import librosa.display
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. Load the audio
+y, sr = librosa.load('test.wav')
+
+plt.figure(figsize=(12, 10))
+
+# --- Plot 1: Mel Spectrogram (Human Perception) ---
+plt.subplot(3, 1, 1)
+S = librosa.feature.melspectrogram(y=y, sr=sr)
+librosa.display.specshow(librosa.power_to_db(S, ref=np.max), x_axis='time', y_axis='mel')
+plt.title('Mel Spectrogram (Energy across Perceptual Frequencies)')
+plt.colorbar(format='%+2.0f dB')
+
+# --- Plot 2: Chromagram (Musical/Pitch Classes) ---
+plt.subplot(3, 1, 2)
+chroma = librosa.feature.chroma_stft(y=y, sr=sr)
+librosa.display.specshow(chroma, y_axis='chroma', x_axis='time')
+plt.title('Chromagram (12 Pitch Classes / Notes)')
+plt.colorbar()
+
+# --- Plot 3: MFCCs (The Sound "Fingerprint") ---
+plt.subplot(3, 1, 3)
+mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+librosa.display.specshow(mfccs, x_axis='time')
+plt.title('MFCC Fingerprint (Vocal Tract Shape)')
+plt.colorbar()
+
+plt.tight_layout()
+plt.show()
+
+```
+
 The spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time.
  ![image](https://github.com/drfuzzi/INF2009_SoundAnalytics/assets/52023898/0ff75402-20c6-492f-9ee8-1f20c954c0a3)
  
@@ -204,43 +242,6 @@ The code `librosa.feature.mfcc` generates the most compressed and powerful featu
 * **Use Case:** **Speech Recognition** and **Voice Biometrics**. It is the "fingerprint" that allows a computer to distinguish between a "Ba" sound and a "Pa" sound, or between User A and User B.
 
 ---
-
-```python
-import librosa
-import librosa.display
-import matplotlib.pyplot as plt
-import numpy as np
-
-# 1. Load the audio
-y, sr = librosa.load('test.wav')
-
-plt.figure(figsize=(12, 10))
-
-# --- Plot 1: Mel Spectrogram (Human Perception) ---
-plt.subplot(3, 1, 1)
-S = librosa.feature.melspectrogram(y=y, sr=sr)
-librosa.display.specshow(librosa.power_to_db(S, ref=np.max), x_axis='time', y_axis='mel')
-plt.title('Mel Spectrogram (Energy across Perceptual Frequencies)')
-plt.colorbar(format='%+2.0f dB')
-
-# --- Plot 2: Chromagram (Musical/Pitch Classes) ---
-plt.subplot(3, 1, 2)
-chroma = librosa.feature.chroma_stft(y=y, sr=sr)
-librosa.display.specshow(chroma, y_axis='chroma', x_axis='time')
-plt.title('Chromagram (12 Pitch Classes / Notes)')
-plt.colorbar()
-
-# --- Plot 3: MFCCs (The Sound "Fingerprint") ---
-plt.subplot(3, 1, 3)
-mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
-librosa.display.specshow(mfccs, x_axis='time')
-plt.title('MFCC Fingerprint (Vocal Tract Shape)')
-plt.colorbar()
-
-plt.tight_layout()
-plt.show()
-
-```
 
 ### Summary of Differences
 
